@@ -1,22 +1,42 @@
 import React from 'react';
-import { imgs } from '../../imgs';
+import { i068 } from '../../imgs';
 import './styles.css';
 
 export function Img ({
 
 }) {
-  const group = imgs.i068;
+  const group = i068;
   return (
     <div className="Img">
       {        
-        group.items.map((imgId, ind) => group[imgId].src && (
-          <div 
-            key={imgId}
-            className='fitPreview100 img'
-            style={{ 'backgroundImage': `url(${group[imgId].src})` }}
-          >
-          </div>
-        ))
+        group.items.map((imgId) => {
+          const item = group[imgId];
+          if (!item.src) return null;
+          const { childs = [] } = item;
+          return (
+            <>
+              <div 
+                keyx={imgId}
+                key={imgId}
+                className='fitPreview100 img'
+                style={{ 'backgroundImage': `url(${group[imgId].src})` }}
+              >
+              </div>
+
+              {(
+                childs.map((child) => (
+                  <div
+                    keyx={child.id} 
+                    key={child.id}
+                    className='fitPreview100 img'
+                    style={{ 'backgroundImage': `url(${child.src})` }}
+                  >
+                  </div>
+                ))
+              )}
+            </>
+          );
+        })
       } 
     </div>
   );
