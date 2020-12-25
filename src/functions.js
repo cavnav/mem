@@ -26,14 +26,33 @@ export function CreateChilds({
   }) {
     const res = [];
     items.forEach((
-      item,
+      src,
     ) => {
       const itemId = genNextItemId();
       res.push({
-        src: item,
+        src,
         id: itemId,
+        title: getTitle({ src })
       });
     });
     return res;
   }
+}
+
+export function addTitle({
+  items = [],
+}) {
+  items.forEach((item) => {
+    item.items.forEach((itemId) => {
+      if (item[itemId].src) {
+        item[itemId].title = getTitle({ src: item[itemId].src });
+      }
+    })
+  });  
+}
+
+function getTitle({
+  src,
+}) {
+  return src.slice(src.lastIndexOf('/') + 1).split('.')[0];
 }

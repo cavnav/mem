@@ -26,3 +26,8 @@
   height: 100%;
   overflow-y: scroll;
 }
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}

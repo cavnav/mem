@@ -14,6 +14,7 @@ return `"${indUpd}": {
 
 copy([...Array(100)].map(a));
 */
+
 import lico from './imgs/068/lico.png';
 import tina from './imgs/068/tina.png';
 import nosha from './imgs/068/nosha.png';
@@ -181,7 +182,10 @@ import vopl from './imgs/068/vopl.png';
 import vrag from './imgs/068/vrag.png';
 import znanie from './imgs/068/znanie.png';
 
-import { CreateChilds } from './functions';
+import { 
+  CreateChilds,
+  addTitle,
+} from './functions';
 
 const createChilds = CreateChilds();
 
@@ -603,6 +607,9 @@ const i068 = {
     src: nenavist,
     id: 'i022',
     order: 22,
+    childs: createChilds({
+      items: [vina],
+    }),
   },
   i023: {
     src: bolshoi,
@@ -2036,6 +2043,10 @@ const i068 = {
     order: 299,
   },
 };
+
+addTitle({
+  items: [i068],
+});
 
 export {
   i068,
